@@ -1,0 +1,11 @@
+Options -Indexes
+DirectoryIndex index.php
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule ^(controllers|models|log|database|bin|tests)/ - [F,L,NC]
+RewriteRule ^views/.*\.php$ - [F,L,NC]
+RewriteRule ^(config.*\.php|.*\.(md|json|sql|ini|log)|\.git.*|\.env.*)$ - [F,L,NC]
+</IfModule>
+<FilesMatch "^(config.*\.php|.*\.(log|sql|ini)|\..*)$">
+Require all denied
+</FilesMatch>

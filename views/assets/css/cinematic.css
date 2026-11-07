@@ -1,0 +1,285 @@
+/* Mundo Invertido — vermelho cinematográfico e movimento com orçamento limitado. */
+:root{--red:#c8102e;--red-bright:#ee2644;--red-deep:#650917;--ink:#10080c;--paper:#fff0e9;--muted:#d1b5ba;--line:#55313b}
+
+html{scrollbar-color:#9f2439 #10080c}
+button:focus-visible,a:focus-visible{outline-color:#ff9ca9}
+.site-header{background:#20090f;border-bottom-color:#6e1728;gap:28px}
+.brand{color:#fff0e9}
+.brand-cross{color:#ef2546}
+.site-header nav>a:not(.nav-cta):hover,.site-header nav>a[aria-current]{color:#ff8fa3}
+.site-header nav{gap:25px}
+.motion-toggle{margin-left:auto;display:inline-flex;align-items:center;justify-content:center;gap:9px;background:#360e19;border:1px solid #81404e;padding:10px 12px;font-size:10px;line-height:1.4;min-height:40px;white-space:nowrap}
+.motion-toggle:hover{background:#5a1325}
+.motion-toggle[aria-pressed=true]{background:#fff0e9;color:#531322}
+.motion-toggle .icon{width:14px}
+.swap-label{display:inline-flex;line-height:1.5}
+.swap-letter{display:inline-block;position:relative;overflow:hidden;white-space:pre;vertical-align:bottom}
+.swap-letter>span{display:inline-block}
+.swap-letter .letter-copy{position:absolute;left:0;top:0}
+
+.poster{background:#420612}
+.poster-forest{background:linear-gradient(180deg,#3f0017a1 0%,#a30b2a5c 45%,#20030ceb 100%),url('../img/backgrounds/florest.webp') center 46%/cover;filter:sepia(.45) saturate(1.6)}
+.poster:after{box-shadow:inset 0 -100px 100px -30px #22030b}
+.poster-title{color:#f12645;text-shadow:0 5px 30px #10080c80}
+.poster-title span+span{-webkit-text-stroke-color:#ff8a9c;color:transparent}
+.poster-topline{color:#f4c5ce}
+.poster-bottom,.scroll-note{z-index:5}
+.poster-bottom p{color:#ffe2e6}
+.poster-creature{z-index:2}
+.atmosphere{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:3;opacity:.8;contain:strict}
+.ticker{background:#c8102e}
+.light-section{background:#870b21;color:#fff0e9;color-scheme:dark}
+.world-story{background:#8a0c24}
+.story-aside .large-quote{color:#ff8196}
+.story-aside .text-link{color:#ffe3e8}
+.world-poster img{box-shadow:16px 24px 40px #24000e55}
+.trailer-section{background:#270a14}
+.gallery-section{background:#590b1c}
+.editorial-gallery figcaption{border-top-color:#a75064}
+.editorial-gallery figcaption>span{color:#ffc1cd}
+.editorial-gallery img{filter:saturate(.95)}
+.club-section{background:linear-gradient(130deg,#390a17,#17090e 70%)}
+.club-intro em{color:#ff5c79}
+.trailer-copy>p,.club-intro>p,.club-form>p{color:#e4bdc7}
+.button.red{background:#c8102e}
+.button.red:hover{background:#a60a25}
+.button.outline:hover{background:#ffe3e8}
+.world-normal .poster-title{color:#fff0e9}
+.world-normal .poster-title span+span{-webkit-text-stroke-color:#fff0e9}
+
+/* Curtain reveal: clip the fixed footer to its own place in the document. */
+.footer-curtain{position:relative;height:88svh;min-height:650px;clip-path:inset(0);isolation:isolate;--footer-progress:1}
+.cinematic-footer.site-footer{position:fixed;bottom:0;left:0;width:100%;height:88svh;min-height:650px;display:flex;flex-direction:column;justify-content:space-between;gap:0;padding:0;background:#ac0c29;color:#fff0e9;overflow:hidden;border-top:0}
+.footer-marquee{overflow:hidden;padding:20px 0;border-bottom:1px solid #e9788b;background:#86091e;flex-shrink:0}
+.footer-marquee>div{display:flex;width:max-content;gap:60px;animation:footer-marquee 35s linear infinite}
+.footer-marquee span{font-family:var(--display);font-size:26px;line-height:1.1}
+.footer-marquee span:after{content:' /';color:#ff9fb0;margin-left:60px}
+.footer-center{position:relative;padding:55px var(--page);z-index:2;transform:translateY(calc((1 - var(--footer-progress)) * 35px));opacity:calc(.45 + var(--footer-progress) * .55)}
+.footer-center h2{font-size:clamp(55px,7.8vw,106px);line-height:.98;max-width:800px}
+.footer-links{margin-top:35px;display:flex;align-items:center;gap:35px;flex-wrap:wrap}
+.footer-links .button{background:#fff0e9;color:#701025;gap:50px}
+.footer-links>a:not(.button){font-size:12px;text-decoration:none;border-bottom:1px solid #ef8b9d;padding:10px 0}
+.footer-links>a:hover{color:#fff}
+.footer-giant{position:absolute;bottom:130px;right:-1%;font-family:var(--display);font-size:clamp(130px,23vw,380px);letter-spacing:-.03em;line-height:.8;white-space:nowrap;color:transparent;-webkit-text-stroke:1px #e2677e;opacity:.35;pointer-events:none;transform:translateY(calc((1 - var(--footer-progress)) * 75px))}
+.footer-bottom{position:relative;z-index:2;padding:30px var(--page);border-top:1px solid #e46d84;display:flex;align-items:center;justify-content:space-between;gap:30px;background:#910b22}
+.footer-bottom p{font-size:10px;color:#ffe0e7;line-height:1.7}
+.footer-bottom p span{font-size:9px;color:#f7c1cc}
+.footer-bottom .brand{font-size:26px}
+.back-top{width:48px;height:48px;display:grid;place-items:center;border:1px solid #f4a6b6;flex-shrink:0}
+.back-top:hover{background:#fff0e9;color:#761025}
+@keyframes footer-marquee{to{transform:translateX(-50%)}
+}
+.footer-curtain:not(.footer-in-view) .footer-marquee>div{animation-play-state:paused}
+
+/* Temporadas: stable thumbnail rail, layered scenes and separately masked typography. */
+.seasons-main{background:#19080f}
+.season-cinema{position:relative;isolation:isolate;overflow:hidden;background:#290a17;padding:28px var(--page) 24px;--scene-tint:#6b0a24}
+.season-ambient{position:absolute;inset:-25px;z-index:-2;background:#5e0d28}
+.season-ambient img{width:100%;height:100%;object-fit:cover;filter:blur(22px);opacity:.3}
+.season-ambient:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,#40071688,#18060f 92%)}
+.season-heading{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px;gap:20px}
+.season-heading>p{font-family:var(--display);font-size:27px;line-height:1.15}
+.season-heading>p>span{display:block;font-family:var(--body);font-size:10px;color:#e7b6c4;margin-top:6px}
+.season-arrows{display:flex;align-items:center;gap:16px}
+.season-arrows button{background:#310c1a;border:1px solid #a05a6c;width:38px;height:38px;display:grid;place-items:center}
+.season-arrows button:hover{background:#a00c2c}
+.season-arrows>span{font-size:10px;letter-spacing:.1em;font-variant-numeric:tabular-nums}
+.season-stage{position:relative;height:clamp(470px,56vw,650px);max-height:64svh;min-height:440px;overflow:hidden;background:#18050c}
+.season-scene{position:absolute;inset:0;z-index:0;overflow:hidden}
+.season-scene[hidden],.season-detail[hidden]{display:none}
+.season-scene img{width:100%;height:100%;object-fit:cover;object-position:center 38%;filter:saturate(.85)}
+.season-scene[data-season-scene="1"] img{object-position:center 30%}
+.season-scene[data-season-scene="5"] img{object-position:center 53%}
+.season-shade{position:absolute;inset:0;background:linear-gradient(90deg,#240511e6 0%,#27071280 48%,#2707120a 100%),linear-gradient(0deg,#1e0611cf,transparent 65%)}
+.season-copy{position:absolute;left:5%;top:50%;transform:translateY(-42%);width:min(570px,75%);z-index:5}
+.season-meta{font-size:12px;font-weight:600;color:#ffc3d0;margin-bottom:20px}
+.season-meta span{margin-left:15px;font-size:10px;font-weight:400;color:#f1ced7}
+.season-copy h1{font-size:clamp(52px,6vw,91px);line-height:1.02;letter-spacing:-.025em;color:#fff0e9;max-width:600px}
+.title-mask{display:block;overflow:hidden;padding-bottom:.04em}
+.title-mask>span{display:block}
+.season-intro{font-size:12px;line-height:1.9;color:#f5dce2;max-width:370px;margin-top:22px}
+.season-actions{display:flex;align-items:center;gap:28px;margin-top:28px;flex-wrap:wrap}
+.season-actions .button{gap:12px;font-size:12px;min-height:48px;padding:13px 20px}
+.season-actions .text-link{font-size:10px;gap:16px}
+.season-actions .text-link span{font-size:18px}
+.season-scene-number{position:absolute;right:3%;bottom:5%;font-family:var(--display);font-size:clamp(80px,12vw,180px);line-height:.85;letter-spacing:-.03em;color:#fff0e930;z-index:4;font-variant-numeric:tabular-nums;pointer-events:none}
+.season-selector{position:relative;z-index:6;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;margin: -26px 3% 0}
+.season-choice{text-decoration:none;min-width:0;display:block;background:#2a0b18;outline-offset:3px;border-top:2px solid transparent;transition:border-color .2s}
+.thumb-image{display:block;overflow:hidden;position:relative;aspect-ratio:2/1;background:#170910}
+.thumb-image:after{content:'';position:absolute;inset:0;background:#31081666;transition:opacity .25s}
+.thumb-image img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.16,1,.3,1)}
+.season-choice:hover .thumb-image img{transform:scale(1.06)}
+.season-choice:hover .thumb-image:after,.season-choice.active .thumb-image:after{opacity:0}
+.season-choice.active{border-color:#ff5d7b;background:#6f1029}
+.thumb-caption{display:flex;align-items:center;gap:12px;padding:12px;color:#f4c7d2}
+.thumb-caption>b{font-family:var(--display);font-size:25px;line-height:1;font-weight:700;color:#ffa4b9}
+.thumb-caption>span{font-size:10px;line-height:1.5}
+.thumb-caption small{display:block;font-size:9px;color:#dba7b7}
+.thumb-caption .icon{margin-left:auto;width:14px}
+.season-hint{max-width:none;display:flex;justify-content:space-between;font-size:9px;color:#dba7b7;margin-top:20px;gap:20px}
+.season-error{color:#ffdbe3;padding-top:15px;font-size:12px}
+.season-details{background:#1c0912}
+.season-story{display:grid;grid-template-columns:1fr 1fr;gap:9%;padding:90px var(--page);background:#840d28;scroll-margin-top:30px}
+.season-story h2{font-size:clamp(45px,5.4vw,76px)}
+.story-period{font-size:11px;color:#fac7d5;margin-top:20px}
+.season-story>div>p:not(.story-period){font-size:14px;line-height:2;color:#ffe6ec}
+.season-story .text-link{margin-top:28px;font-size:11px}
+.season-trailer{padding:85px var(--page);scroll-margin-top:25px}
+.trailer-header{display:flex;align-items:end;justify-content:space-between;gap:40px;margin-bottom:38px}
+.trailer-header h2{font-size:clamp(40px,4.5vw,66px)}
+.trailer-header p{font-size:11px;color:#deb9c5}
+.season-video{width:100%;aspect-ratio:16/9;background:#080305;overflow:hidden;max-height:720px}
+.trailer-preview{position:relative;height:100%}
+.trailer-preview>img{width:100%;height:100%;object-fit:cover;filter:brightness(.55)}
+.trailer-play{position:absolute;inset:0;margin:auto;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:#fff0e9;background:transparent;border:0;width:100%;height:100%;font-size:12px}
+.trailer-play .icon{box-sizing:content-box;padding:24px;border:1px solid #ffe0e7;border-radius:50%;background:#a10c2dc9;transition:background .2s}
+.trailer-play:hover .icon{background:#c8102e}
+.season-video iframe,.season-video video{display:block;width:100%;height:100%;aspect-ratio:16/9;border:0;background:#080305}
+.video-help{display:flex;max-width:none;justify-content:space-between;gap:20px;margin-top:17px;font-size:10px;color:#cca3b1}
+.video-help a{white-space:nowrap}
+.season-cast{padding:70px var(--page) 95px;background:#430c20}
+.cast-heading{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:40px}
+.cast-heading h2{font-size:clamp(42px,4.7vw,68px)}
+.cast-heading>p{font-size:11px;color:#ecc3d1}
+.cast-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:25px}
+.cast-grid figure img{width:100%;aspect-ratio:16/11;height:auto;object-fit:cover}
+.cast-grid figure h3{font-size:30px;line-height:1.15;color:#fff0e9}
+.cast-grid figcaption{border-top:1px solid #996074;margin-top:16px;padding-top:18px}
+.cast-grid figcaption p{font-size:11px;color:#e9b7c9;margin-top:8px}
+.season-detail:not(:first-child){border-top:1px solid #a63f5b}
+
+.motion-off,.motion-off body{scroll-behavior:auto}
+.motion-off *, .motion-off *:before,.motion-off *:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+.motion-off .atmosphere{display:none}
+.motion-off .poster-forest,.motion-off .poster-creature{transform:none!important}
+.motion-off .footer-curtain{clip-path:none;height:auto;min-height:0}
+.motion-off .cinematic-footer.site-footer{position:relative;height:auto;min-height:600px}
+.motion-off .footer-center,.motion-off .footer-giant{transform:none;opacity:1}
+.motion-off .footer-giant{opacity:.25}
+
+@media(min-width:1400px){.season-stage{min-height:500px}
+.season-selector{margin-top:-40px}
+.season-cinema{padding-bottom:30px}
+}
+
+@media(max-width:1100px){.site-header{gap:18px}
+.site-header nav{gap:18px}
+.motion-toggle{font-size:9px;padding:9px}
+.season-actions{gap:18px}
+.season-copy h1{font-size:68px}
+.thumb-caption{gap:8px;padding:10px}
+.thumb-caption .icon{display:none}
+.footer-center h2{font-size:85px}
+}
+
+@media(max-width:900px) and (min-width:761px){.site-header{padding-left:25px;padding-right:25px}
+.site-header nav{gap:13px;font-size:11px}
+.nav-cta{padding:10px 12px;gap:14px}
+.brand{font-size:22px}
+.motion-toggle{font-size:9px;max-width:112px;white-space:normal}
+}
+
+@media(max-width:760px){.site-header{gap:16px}
+.motion-toggle{min-height:36px;font-size:9px;padding:8px;gap:6px}
+.motion-toggle span{max-width:95px;white-space:normal;text-align:left}
+.site-header nav{background:#280a15;border-bottom-color:#813045}
+.site-header.menu-open nav{animation:menu-reveal .35s cubic-bezier(.16,1,.3,1)}
+.poster-forest{background-position:center}
+.poster-title{color:#f52a4c}
+.poster-title span+span{-webkit-text-stroke-color:#ff849b}
+.footer-curtain{height:90svh;min-height:660px}
+.cinematic-footer.site-footer{height:90svh;min-height:660px}
+.footer-center{padding:48px var(--page)}
+.footer-center h2{font-size:64px}
+.footer-links{gap:20px;margin-top:30px}
+.footer-links .button{flex-basis:100%;max-width:340px;justify-content:space-between}
+.footer-links>a:not(.button){font-size:11px}
+.footer-giant{font-size:29vw;bottom:175px}
+.footer-marquee{padding:17px 0}
+.footer-marquee span{font-size:22px}
+.footer-bottom{flex-wrap:wrap;gap:20px;padding:25px var(--page)}
+.footer-bottom .brand{font-size:23px}
+.footer-bottom p{order:3;flex-basis:100%;font-size:9px}
+.footer-bottom p span{font-size:8px}
+.back-top{width:40px;height:40px}
+.season-cinema{padding:22px 0 20px}
+.season-heading{padding:0 var(--page);margin-bottom:20px}
+.season-heading>p{font-size:24px}
+.season-heading>p>span{font-size:9px}
+.season-arrows{gap:10px}
+.season-arrows>span{font-size:9px}
+.season-arrows button{height:34px;width:34px}
+.season-stage{height:570px;max-height:none;min-height:0}
+.season-copy{left:var(--page);right:var(--page);top:auto;bottom:65px;transform:none;width:auto}
+.season-copy h1{font-size:clamp(48px,12vw,70px)}
+.season-meta{margin-bottom:15px;font-size:11px}
+.season-meta span{font-size:9px;margin-left:10px}
+.season-intro{font-size:12px;max-width:320px;margin-top:20px}
+.season-actions{margin-top:22px;gap:22px}
+.season-actions .button{min-height:47px;padding:12px 16px;font-size:11px}
+.season-actions .text-link{font-size:10px;gap:10px}
+.season-scene img{object-position:60% center}
+.season-scene[data-season-scene="1"] img{object-position:40% center}
+.season-shade{background:linear-gradient(0deg,#1a050fea 0%,#24091278 65%,#26081130 100%)}
+.season-scene-number{font-size:100px;right:var(--page);bottom:15px;opacity:.4}
+.season-selector{display:flex;margin:-26px 0 0;padding:0 var(--page) 8px;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:thin;gap:12px}
+.season-choice{flex:0 0 126px;scroll-snap-align:center}
+.thumb-image{aspect-ratio:1.75}
+.thumb-caption{padding:10px;gap:8px}
+.thumb-caption>b{font-size:23px}
+.thumb-caption>span{font-size:9px}
+.thumb-caption small{font-size:8px}
+.season-hint{padding:0 var(--page);font-size:9px;margin-top:16px}
+.season-hint>span{display:none}
+.season-error{padding:0 var(--page)}
+.season-story{padding:60px var(--page);grid-template-columns:1fr;gap:30px}
+.season-story h2{font-size:48px}
+.story-period{margin-top:14px;font-size:10px}
+.season-story>div>p:not(.story-period){font-size:13px;line-height:1.95}
+.season-trailer{padding:60px var(--page)}
+.trailer-header{display:block;margin-bottom:26px}
+.trailer-header h2{font-size:42px}
+.trailer-header p{margin-top:22px;font-size:10px}
+.video-help{display:block;font-size:9px;line-height:1.9}
+.video-help a{display:block;margin-top:10px}
+.trailer-play .icon{padding:15px;width:24px;height:24px}
+.trailer-play{font-size:10px;gap:10px}
+.season-cast{padding:55px var(--page) 60px}
+.cast-heading{display:block;margin-bottom:30px}
+.cast-heading h2{font-size:44px}
+.cast-heading p{margin-top:20px;font-size:10px}
+.cast-grid{grid-template-columns:1fr;gap:32px}
+.cast-grid figure img{aspect-ratio:16/10}
+.cast-grid figure h3{font-size:32px}
+.cast-grid figcaption{padding-top:14px;margin-top:12px}
+.cast-grid figcaption p{font-size:11px}
+.motion-off .cinematic-footer.site-footer{min-height:660px}
+}
+
+@media(max-width:380px){.brand{font-size:18px}
+.brand-cross{font-size:25px}
+.site-header{gap:10px}
+.menu-toggle{font-size:10px;gap:8px}
+.motion-toggle span{max-width:78px;font-size:8px}
+.season-stage{height:565px}
+.season-actions{gap:17px}
+.season-actions .text-link{font-size:9px}
+}
+
+@media(prefers-reduced-motion:reduce){html:not(.motion-off) .atmosphere{display:none}
+.footer-curtain{clip-path:none;height:auto;min-height:0}
+.cinematic-footer.site-footer{position:relative;height:auto;min-height:600px}
+.footer-center,.footer-giant{transform:none}
+.footer-center{opacity:1}
+}
+
+@keyframes menu-reveal{from{clip-path:inset(0 0 100%)}
+to{clip-path:inset(0)}
+}
+
+
+/* Header wordmark: use the series artwork, including on compact screens. */
+.site-header .brand{flex:0 0 auto;display:block;line-height:1}
+.site-header .brand-logo{display:block;width:160px;height:58px;object-fit:contain}
+@media(max-width:760px){.site-header .brand-logo{width:120px;height:44px}}
+@media(max-width:380px){.site-header .brand-logo{width:96px;height:35px}}

@@ -1,0 +1,1 @@
+<main id="main" class="error-page"><h1><?= e($title??'Algo deu errado') ?></h1><p><?= e($message??'Tente novamente em alguns instantes.') ?></p><a class="button red" href="<?= e(url()) ?>">Voltar ao início <span aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></span></a></main>
