@@ -1,0 +1,15 @@
+config.local.php
+.env
+.env.*
+!.env.example
+*.log
+*.sql.gz
+*.sqlite
+*.sqlite3
+*.bak
+*.zip
+backups/
+.impeccable/
+log/*
+!log/.gitkeep
+!log/.htaccess

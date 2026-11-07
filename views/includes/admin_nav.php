@@ -1,0 +1,1 @@
+<nav class="admin-nav" aria-label="Administração"><a href="<?= e(url('admin_messages')) ?>" <?= $route==='admin_messages'?'aria-current="page"':'' ?>>Mensagens</a><a href="<?= e(url('admin_users')) ?>" <?= $route==='admin_users'?'aria-current="page"':'' ?>>Usuários</a><a href="<?= e(url('admin_audit')) ?>" <?= $route==='admin_audit'?'aria-current="page"':'' ?>>Auditoria</a></nav>
